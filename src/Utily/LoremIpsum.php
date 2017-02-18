@@ -6,20 +6,19 @@
  * and open the template in the editor.
  */
 
-namespace Tools\View\Helper;
+namespace Tools\Utily;
 
-use Cake\View\Helper;
-use Cake\View\View;
 use Tools\Traits\LoremIpsumTrait;
 
 /**
- * CakePHP LoremIpsumHelper
+ * Description of LoremIpsum
+ *
  * @author allan
  */
-class LoremIpsumHelper extends Helper
+class LoremIpsum
 {
     use LoremIpsumTrait;
-    
+
     /**
      * Word
      *
@@ -29,11 +28,12 @@ class LoremIpsumHelper extends Helper
      * @param  mixed  $tags string or array of HTML tags to wrap output with
      * @return string generated lorem ipsum word
      */
-    public function word($tags = false)
+    public static function word($tags = false)
     {
-        return $this->_word($tags);
+        $loremIpsum = new LoremIpsum();
+        return $loremIpsum->_word($tags);
     }
-    
+
     /**
      * Words Array
      *
@@ -44,11 +44,12 @@ class LoremIpsumHelper extends Helper
      * @param  mixed   $tags string or array of HTML tags to wrap output with
      * @return array   generated lorem ipsum words
      */
-    public function wordsArray($count = 1, $tags = false)
+    public static function wordsArray($count = 1, $tags = false)
     {
-        return $this->_wordsArray($count, $tags);
+        $loremIpsum = new LoremIpsum();
+        return $loremIpsum->_wordsArray($count, $tags);
     }
-    
+
     /**
      * Words
      *
@@ -60,11 +61,12 @@ class LoremIpsumHelper extends Helper
      * @param  boolean $array whether an array or a string should be returned
      * @return mixed   string or array of generated lorem ipsum words
      */
-    public function words($count = 1, $tags = false, $array = false)
+    public static function words($count = 1, $tags = false, $array = false)
     {
-        return $this->_words($count, $tags, $array);
+        $loremIpsum = new LoremIpsum();
+        return $loremIpsum->_words($count, $tags, $array);
     }
-    
+
     /**
      * Sentence
      *
@@ -74,11 +76,12 @@ class LoremIpsumHelper extends Helper
      * @param  mixed  $tags string or array of HTML tags to wrap output with
      * @return string generated lorem ipsum sentence
      */
-    public function sentence($tags = false)
+    public static function sentence($tags = false)
     {
-        return $this->_sentence($tags);
+        $loremIpsum = new LoremIpsum();
+        return $loremIpsum->_sentence($tags);
     }
-    
+
     /**
      * Sentences Array
      *
@@ -89,11 +92,12 @@ class LoremIpsumHelper extends Helper
      * @param  mixed   $tags string or array of HTML tags to wrap output with
      * @return array   generated lorem ipsum sentences
      */
-    public function sentencesArray($count = 1, $tags = false)
+    public static function sentencesArray($count = 1, $tags = false)
     {
-        return $this->_sentencesArray($count, $tags);
+        $loremIpsum = new LoremIpsum();
+        return $loremIpsum->_sentencesArray($count, $tags);
     }
-    
+
     /**
      * Sentences
      *
@@ -105,11 +109,12 @@ class LoremIpsumHelper extends Helper
      * @param  boolean $array whether an array or a string should be returned
      * @return mixed   string or array of generated lorem ipsum sentences
      */
-    public function sentences($count = 1, $tags = false, $array = false)
+    public static function sentences($count = 1, $tags = false, $array = false)
     {
-        return $this->_sentences($count, $tags, $array);
+        $loremIpsum = new LoremIpsum();
+        return $loremIpsum->_sentences($count, $tags, $array);
     }
-    
+
     /**
      * Paragraph
      *
@@ -119,11 +124,12 @@ class LoremIpsumHelper extends Helper
      * @param  mixed  $tags string or array of HTML tags to wrap output with
      * @return string generated lorem ipsum paragraph
      */
-    public function paragraph($tags = false)
+    public static function paragraph($tags = false)
     {
-        return $this->_paragraph($tags);
+        $loremIpsum = new LoremIpsum();
+        return $loremIpsum->_paragraph($tags);
     }
-    
+
     /**
      * Paragraph Array
      *
@@ -134,11 +140,12 @@ class LoremIpsumHelper extends Helper
      * @param  mixed   $tags string or array of HTML tags to wrap output with
      * @return array   generated lorem ipsum paragraphs
      */
-    public function paragraphsArray($count = 1, $tags = false)
+    public static function paragraphsArray($count = 1, $tags = false)
     {
-        return $this->_paragraphsArray($count, $tags);
+        $loremIpsum = new LoremIpsum();
+        return $loremIpsum->_paragraphsArray($count, $tags);
     }
-    
+
     /**
      * Paragraphss
      *
@@ -150,8 +157,9 @@ class LoremIpsumHelper extends Helper
      * @param  boolean $array whether an array or a string should be returned
      * @return mixed   string or array of generated lorem ipsum paragraphs
      */
-    public function paragraphs($count = 1, $tags = false, $array = false)
+    public static function paragraphs($count = 1, $tags = false, $array = false)
     {
-        return $this->_paragraphs($count, $tags, $array);
+        $loremIpsum = new LoremIpsum();
+        return $loremIpsum->_paragraphs($count, $tags, $array);
     }
 }

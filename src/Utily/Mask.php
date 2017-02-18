@@ -6,31 +6,28 @@
  * and open the template in the editor.
  */
 
-namespace Tools\View\Helper;
+namespace Tools\Utily;
 
-use Cake\View\Helper;
 use Tools\Traits\MaskTrait;
 
 /**
- * CakePHP MaskHelper
+ * Description of Mask
+ *
  * @author allan
  */
-class MaskHelper extends Helper
+class Mask
 {
     use MaskTrait;
-    
-    public $helpers = [
-        'Tools.Validate'
-    ];
     
     /**
      * Formata um CPF
      * @param string $cpfNumber numero do cpf a ser formatado
      * @return string
      */
-    public function cpf($cpfNumber)
+    public static function cpf($cpfNumber)
     {
-        return $this->_cpf($cpfNumber);
+        $mask = new Mask();
+        return $mask->_cpf($cpfNumber);
     }
     
     /**
@@ -38,9 +35,10 @@ class MaskHelper extends Helper
      * @param string $cnpjNumber numero do cnpj a ser formatado
      * @return string
      */
-    public function cnpj($cnpjNumber)
+    public static function cnpj($cnpjNumber)
     {
-        return $this->_cnpj($cnpjNumber);
+        $mask = new Mask();
+        return $mask->_cnpj($cnpjNumber);
     }
     
     /**
@@ -48,9 +46,10 @@ class MaskHelper extends Helper
      * @param string $rgNumber numero do rg a ser formatado 
      * @return string
      */
-    public function rg($rgNumber)
+    public static function rg($rgNumber)
     {
-        return $this->_rg($rgNumber);
+        $mask = new Mask();
+        return $mask->_rg($rgNumber);
     }
     
     /**
@@ -58,9 +57,10 @@ class MaskHelper extends Helper
      * @param string $phoneNumber numero de telefone a ser formatado
      * @return string
      */
-    public function phone($phoneNumber)
+    public static function phone($phoneNumber)
     {
-        return $this->_phone($phoneNumber);
+        $mask = new Mask();
+        return $mask->_phone($phoneNumber);
     }
     
     /**
@@ -68,9 +68,10 @@ class MaskHelper extends Helper
      * @param string $cepNumber numero do CEP a ser formatado
      * @return string
      */
-    public function cep($cepNumber)
+    public static function cep($cepNumber)
     {
-        return $this->_cep($cepNumber);
+        $mask = new Mask();
+        return $mask->_cep($cepNumber);
     }
     
     /**
@@ -79,8 +80,9 @@ class MaskHelper extends Helper
      * @param string $mask
      * @return string
      */
-    public function custom($value, $mask)
+    public static function custom($value, $mask)
     {
-        return $this->_custom($value, $mask);
+        $maskClass = new Mask();
+        return $maskClass->_custom($value, $mask);
     }
 }

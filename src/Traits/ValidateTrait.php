@@ -14,7 +14,7 @@ use Tools\Abstracts\PhoneTypes;
 trait ValidateTrait
 {
 
-    private function getCpfDigitsSum($numbers, $second = false)
+    private function _getCpfDigitsSum($numbers, $second = false)
     {
         if ($second == false)
         {
@@ -33,7 +33,7 @@ trait ValidateTrait
         return $sumOfNumbers;
     }
 
-    private function getCnpjDigitsSum($numbers, $second = false)
+    private function _getCnpjDigitsSum($numbers, $second = false)
     {
         $sumOfNumbers = 0;
         if ($second == false)
@@ -71,7 +71,7 @@ trait ValidateTrait
         return $sumOfNumbers;
     }
 
-    private function getCpfCnpjVerificationDigit($sum)
+    private function _getCpfCnpjVerificationDigit($sum)
     {
         $sum = $sum % 11;
         if ($sum < 2)
@@ -83,14 +83,14 @@ trait ValidateTrait
         }
     }
 
-    public function cpf($cpfNumber = null)
+    protected function _cpf($cpfNumber = null)
     {
         if ($cpfNumber == null)
         {
             return false;
         }
 
-        $value = preg_replace('/[^0-9]/', '', $cpfNumber);
+        $value = $cpfNumber;
 
         if (strlen($value) != 11)
         {
@@ -98,10 +98,10 @@ trait ValidateTrait
         }
 
         $numbers = substr($value, 0, 9);
-        $newCpf  = $numbers . $this->getCpfCnpjVerificationDigit($this->getCpfDigitsSum($numbers));
-        $newCpf  = $newCpf . $this->getCpfCnpjVerificationDigit($this->getCpfDigitsSum($newCpf, true));
+        $newCpf  = $numbers . $this->_getCpfCnpjVerificationDigit($this->_getCpfDigitsSum($numbers));
+        $newCpf  = $newCpf . $this->_getCpfCnpjVerificationDigit($this->_getCpfDigitsSum($newCpf, true));
 
-        if ($newCpf === $cpfValue)
+        if ($newCpf === $cpfNumber)
         {
             return true;
         } else
@@ -110,14 +110,14 @@ trait ValidateTrait
         }
     }
 
-    public function cnpj($cnpjNumero = null)
+    protected function _cnpj($cnpjNumber = null)
     {
-        if ($cnpjNumero == null)
+        if ($cnpjNumber == null)
         {
             return false;
         }
 
-        $value = preg_replace('/[^0-9]/', '', $cnpjNumero);
+        $value = $cnpjNumber;
 
         if (strlen($value) != 14)
         {
@@ -125,10 +125,10 @@ trait ValidateTrait
         }
 
         $numbers = substr($value, 0, 12);
-        $newCnpj = $numbers . $this->getCpfCnpjVerificationDigit($this->getCnpjDigitsSum($numbers));
-        $newCnpj = $newCnpj . $this->getCpfCnpjVerificationDigit($this->getCnpjDigitsSum($newCnpj, true));
+        $newCnpj = $numbers . $this->_getCpfCnpjVerificationDigit($this->_getCnpjDigitsSum($numbers));
+        $newCnpj = $newCnpj . $this->_getCpfCnpjVerificationDigit($this->_getCnpjDigitsSum($newCnpj, true));
 
-        if ($newCnpj === $cnpjValue)
+        if ($newCnpj === $cnpjNumber)
         {
             return true;
         } else
@@ -137,9 +137,36 @@ trait ValidateTrait
         }
     }
 
-    public function phone($phoneNumber, $type = 0)
+    protected function _rg($rgNumber = null)
     {
-        $value = preg_replace('/[^0-9]/', '', $phoneNumber);
+        if ($rgNumber == null)
+        {
+            return false;
+        }
+        $value = $rgNumber;
+        return ((bool) preg_match('/^([0-9]{8}|[0-9]{9}|[0-9]{10})$/', $value));
+    }
+
+    protected function _phone($phoneNumber = null, $type = null)
+    {
+        if ($phoneNumber == null)
+        {
+            return false;
+        }
+        $value = $phoneNumber;
+
+        if ($type == null)
+        {
+            if (in_array(substr($value, 0, 4), ['0800', '0300', '0500', '0900']))
+            {
+                $type = PhoneTypes::NAO_GEOGRAFICOS;
+            }
+
+            if (strlen($value) >= 3 and strlen($value) <= 5)
+            {
+                $type = PhoneTypes::SERVICO;
+            }
+        }
 
         if ($type === PhoneTypes::PADRAO)
         {
@@ -187,10 +214,14 @@ trait ValidateTrait
         }
         return false;
     }
-    
-    public function cep($cepNumber)
+
+    protected function _cep($cepNumber = null)
     {
-        $value = preg_replace('/[^0-9]/', '', $cepNumber);
+        if ($cepNumber == null)
+        {
+            return false;
+        }
+        $value = $cepNumber;
         return ((bool) preg_match('/^([0-9]{8})$/', $value));
     }
 

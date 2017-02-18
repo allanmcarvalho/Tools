@@ -19,18 +19,18 @@ trait MaskTrait
      * @param string $cpfNumber
      * @return string
      */
-    public function cpf($cpfNumber)
+    protected function _cpf($cpfNumber)
     {
         $value = preg_replace('/[^0-9]/', '', strval($cpfNumber));
 
-        if (!$this->Validate->cpf($value))
+        if (!\Tools\Utily\Validate::cpf($value))
         {
             return __d('tools', 'CPF inválido');
         }
 
         $mask = '###.###.###-##';
 
-        return $this->custom($value, $mask);
+        return $this->_custom($value, $mask);
     }
 
     /**
@@ -38,18 +38,18 @@ trait MaskTrait
      * @param string $val
      * @return string
      */
-    public function cnpj($cnpjNumber)
+    protected function _cnpj($cnpjNumber)
     {
         $value = preg_replace('/[^0-9]/', '', $cnpjNumber);
 
-        if (!$this->Validate->cnpj($value))
+        if (!\Tools\Utily\Validate::cnpj($value))
         {
             return __d('tools', 'CNPJ inválido');
         }
 
         $mask = '##.###.###/####-##';
 
-        return $this->custom($value, $mask);
+        return $this->_custom($value, $mask);
     }
 
     /**
@@ -57,10 +57,15 @@ trait MaskTrait
      * @param string $val
      * @return string
      */
-    public function rg($rgNumber)
+    protected function _rg($rgNumber)
     {
         $value = preg_replace('/[^0-9]/', '', $rgNumber);
 
+        if (!\Tools\Utily\Validate::rg($value))
+        {
+            return __d('tools', 'RG inválido');
+        }
+        
         switch (strlen($value)):
             case 8:
                 $mask = '#.###.###-#';
@@ -74,7 +79,7 @@ trait MaskTrait
         endswitch;
 
 
-        return $this->custom($value, $mask);
+        return $this->_custom($value, $mask);
     }
 
     /**
@@ -82,27 +87,27 @@ trait MaskTrait
      * @param string $val
      * @return string
      */
-    public function phone($phoneNumber)
+    protected function _phone($phoneNumber)
     {
         $value = preg_replace('/[^0-9]/', '', $phoneNumber);
 
         switch (strlen($value)):
             case 3:
-                if (!$this->Validate->phone($value, PhoneTypes::SERVICO))
+                if (!\Tools\Utily\Validate::phone($value, PhoneTypes::SERVICO))
                 {
                     return __d('tools', 'Telefone inválido');
                 }
                 $mask = '###';
                 break;
             case 4:
-                if (!$this->Validate->phone($value, PhoneTypes::SERVICO))
+                if (!\Tools\Utily\Validate::phone($value, PhoneTypes::SERVICO))
                 {
                     return __d('tools', 'Telefone inválido');
                 }
                 $mask = '####';
                 break;
             case 5:
-                if (!$this->Validate->phone($value, PhoneTypes::SERVICO))
+                if (!\Tools\Utily\Validate::phone($value, PhoneTypes::SERVICO))
                 {
                     return __d('tools', 'Telefone inválido');
                 }
@@ -112,14 +117,14 @@ trait MaskTrait
                 $prefix = substr($value, 0, 4);
                 if (in_array($prefix, ['0300', '0500', '0800', '0900']))
                 {
-                    if (!$this->Validate->phone($value, PhoneTypes::NAO_GEOGRAFICOS))
+                    if (!\Tools\Utily\Validate::phone($value, PhoneTypes::NAO_GEOGRAFICOS))
                     {
                         return __d('tools', 'Telefone inválido');
                     }
                     $mask = '####-##-####';
                 } else
                 {
-                    if (!$this->Validate->phone($value))
+                    if (!\Tools\Utily\Validate::phone($value))
                     {
                         return __d('tools', 'Telefone inválido');
                     }
@@ -130,7 +135,7 @@ trait MaskTrait
                 $prefix = substr($value, 0, 4);
                 if (in_array($prefix, ['0300', '0500', '0800', '0900']))
                 {
-                    if (!$this->Validate->phone($value, PhoneTypes::NAO_GEOGRAFICOS))
+                    if (!\Tools\Utily\Validate::phone($value, PhoneTypes::NAO_GEOGRAFICOS))
                     {
                         return __d('tools', 'Telefone inválido');
                     }
@@ -139,14 +144,14 @@ trait MaskTrait
                 {
                     if (substr($value, 0, 1) == "0")
                     {
-                        if (!$this->Validate->phone($value))
+                        if (!\Tools\Utily\Validate::phone($value))
                         {
                             return __d('tools', 'Telefone inválido');
                         }
                         $mask = '(###) ####-####';
                     } else
                     {
-                        if (!$this->Validate->phone($value))
+                        if (!\Tools\Utily\Validate::phone($value))
                         {
                             return __d('tools', 'Telefone inválido');
                         }
@@ -157,7 +162,7 @@ trait MaskTrait
             case 12:
                 if (substr($value, 0, 1) == "0")
                 {
-                    if (!$this->Validate->phone($value, PhoneTypes::CELULAR))
+                    if (!\Tools\Utily\Validate::phone($value, PhoneTypes::CELULAR))
                     {
                         return __d('tools', 'Telefone inválido');
                     }
@@ -172,7 +177,7 @@ trait MaskTrait
                 break;
         endswitch;
 
-        return $this->custom($value, $mask);
+        return $this->_custom($value, $mask);
     }
 
     /**
@@ -180,18 +185,18 @@ trait MaskTrait
      * @param string $cpfNumber
      * @return string
      */
-    public function cep($cepNumber)
+    protected function _cep($cepNumber)
     {
         $value = preg_replace('/[^0-9]/', '', strval($cepNumber));
 
-        if (!$this->Validate->cep($value))
+        if (!\Tools\Utily\Validate::cep($value))
         {
             return __d('tools', 'CEP inválido');
         }
 
         $mask = '##.###-###';
 
-        return $this->custom($value, $mask);
+        return $this->_custom($value, $mask);
     }
     
     /**
@@ -200,7 +205,7 @@ trait MaskTrait
      * @param string $mask
      * @return string
      */
-    public function custom($value, $mask)
+    protected function _custom($value, $mask)
     {
         $maskared   = '';
         $k          = 0;

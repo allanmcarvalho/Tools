@@ -6,16 +6,15 @@
  * and open the template in the editor.
  */
 
-namespace Tools\View\Helper;
+namespace Tools\Utily;
 
-use Cake\View\Helper;
 use Tools\Traits\ValidateTrait;
-
 /**
- * CakePHP ValidatorHelper
+ * Description of Validation
+ *
  * @author allan
  */
-class ValidateHelper extends Helper
+class Validate
 {
     use ValidateTrait;
     
@@ -24,9 +23,10 @@ class ValidateHelper extends Helper
      * @param string $cpfNumber numero com ou sem mascara contendo 11 dígitos
      * @return bool
      */
-    public function cpf($cpfNumber)
+    public static function cpf($cpfNumber)
     {
-        return $this->_cpf($cpfNumber);
+        $validate = new Validate();
+        return $validate->_cpf($cpfNumber);
     }
     
     /**
@@ -34,9 +34,10 @@ class ValidateHelper extends Helper
      * @param string $cnpjNumber numero com ou sem mascara contendo 14 dígitos
      * @return bool
      */
-    public function cnpj($cnpjNumber)
+    public static function cnpj($cnpjNumber)
     {
-        return $this->_cnpj($cnpjNumber);
+        $validate = new Validate();
+        return $validate->_cnpj($cnpjNumber);
     }
     
     /**
@@ -44,9 +45,10 @@ class ValidateHelper extends Helper
      * @param string $rgNumber numero com ou sem mascara contendo de 8 a 10 dígitos
      * @return bool
      */
-    public function rg($rgNumber)
+    public static function rg($rgNumber)
     {
-        return $this->_rg($rgNumber);
+        $validate = new Validate();
+        return $validate->_rg($rgNumber);
     }
     
     /**
@@ -55,9 +57,10 @@ class ValidateHelper extends Helper
      * @param \Tools\Abstracts\PhoneTypes $type
      * @return bool
      */
-    public function phone($phoneNumber, $type = 0)
+    public static function phone($phoneNumber, $type = 0)
     {
-        return $this->_phone($phoneNumber, $type);
+        $validate = new Validate();
+        return $validate->_phone($phoneNumber, $type);
     }
     
     /**
@@ -65,8 +68,9 @@ class ValidateHelper extends Helper
      * @param string $cepNumber numero do cep contendo 8 dígitos
      * @return bool
      */
-    public function cep($cepNumber)
+    public static function cep($cepNumber)
     {
-        return $this->_cep($cepNumber);
+        $validate = new Validate();
+        return $validate->_cep($cepNumber);
     }
 }

@@ -6,20 +6,20 @@
  * and open the template in the editor.
  */
 
-namespace Tools\View\Helper;
+namespace Tools\Controller\Component;
 
-use Cake\View\Helper;
-use Cake\View\View;
+use Cake\Controller\Component;
 use Tools\Traits\LoremIpsumTrait;
 
 /**
- * CakePHP LoremIpsumHelper
+ * CakePHP LoremIpsumComponent
  * @author allan
  */
-class LoremIpsumHelper extends Helper
+class LoremIpsumComponent extends Component
 {
+
     use LoremIpsumTrait;
-    
+
     /**
      * Word
      *
@@ -33,7 +33,7 @@ class LoremIpsumHelper extends Helper
     {
         return $this->_word($tags);
     }
-    
+
     /**
      * Words Array
      *
@@ -48,7 +48,7 @@ class LoremIpsumHelper extends Helper
     {
         return $this->_wordsArray($count, $tags);
     }
-    
+
     /**
      * Words
      *
@@ -64,7 +64,7 @@ class LoremIpsumHelper extends Helper
     {
         return $this->_words($count, $tags, $array);
     }
-    
+
     /**
      * Sentence
      *
@@ -78,7 +78,7 @@ class LoremIpsumHelper extends Helper
     {
         return $this->_sentence($tags);
     }
-    
+
     /**
      * Sentences Array
      *
@@ -93,7 +93,7 @@ class LoremIpsumHelper extends Helper
     {
         return $this->_sentencesArray($count, $tags);
     }
-    
+
     /**
      * Sentences
      *
@@ -109,7 +109,7 @@ class LoremIpsumHelper extends Helper
     {
         return $this->_sentences($count, $tags, $array);
     }
-    
+
     /**
      * Paragraph
      *
@@ -123,7 +123,7 @@ class LoremIpsumHelper extends Helper
     {
         return $this->_paragraph($tags);
     }
-    
+
     /**
      * Paragraph Array
      *
@@ -138,7 +138,7 @@ class LoremIpsumHelper extends Helper
     {
         return $this->_paragraphsArray($count, $tags);
     }
-    
+
     /**
      * Paragraphss
      *
@@ -154,4 +154,5 @@ class LoremIpsumHelper extends Helper
     {
         return $this->_paragraphs($count, $tags, $array);
     }
+
 }
