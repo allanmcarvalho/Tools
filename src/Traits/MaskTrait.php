@@ -19,189 +19,208 @@ trait MaskTrait
      * @param string $cpfNumber
      * @return string
      */
-    protected function _cpf($cpfNumber)
+    protected function _cpf($cpfNumber = null)
     {
-        $value = preg_replace('/[^0-9]/', '', strval($cpfNumber));
-
-        if (!\Tools\Utily\Validate::cpf($value))
+        if (!empty($cpfNumber))
         {
-            return __d('tools', 'CPF invalid');
+            $value = preg_replace('/[^0-9]/', '', strval($cpfNumber));
+
+            if (!\Tools\Utily\Validate::cpf($value))
+            {
+                return __d('tools', 'CPF invalid');
+            }
+
+            $mask = '###.###.###-##';
+
+            return $this->_custom($value, $mask);
         }
-
-        $mask = '###.###.###-##';
-
-        return $this->_custom($value, $mask);
+        return $cpfNumber;
     }
 
     /**
      * Format a cnpj
-     * @param string $val
+     * @param string $cnpjNumber
      * @return string
      */
     protected function _cnpj($cnpjNumber)
     {
-        $value = preg_replace('/[^0-9]/', '', $cnpjNumber);
-
-        if (!\Tools\Utily\Validate::cnpj($value))
+        if (!empty($cnpjNumber))
         {
-            return __d('tools', 'CNPJ invalid');
+            $value = preg_replace('/[^0-9]/', '', $cnpjNumber);
+
+            if (!\Tools\Utily\Validate::cnpj($value))
+            {
+                return __d('tools', 'CNPJ invalid');
+            }
+
+            $mask = '##.###.###/####-##';
+
+            return $this->_custom($value, $mask);
         }
-
-        $mask = '##.###.###/####-##';
-
-        return $this->_custom($value, $mask);
+        return $cnpjNumber;
     }
 
     /**
      * Format a RG
-     * @param string $val
+     * @param string $rgNumber
      * @return string
      */
     protected function _rg($rgNumber)
     {
-        $value = preg_replace('/[^0-9]/', '', $rgNumber);
-
-        if (!\Tools\Utily\Validate::rg($value))
+        if (!empty($rgNumber))
         {
-            return __d('tools', 'RG invalid');
+            $value = preg_replace('/[^0-9]/', '', $rgNumber);
+
+            if (!\Tools\Utily\Validate::rg($value))
+            {
+                return __d('tools', 'RG invalid');
+            }
+
+            switch (strlen($value)):
+                case 8:
+                    $mask = '#.###.###-#';
+                    break;
+                case 9:
+                    $mask = '##.###.###-#';
+                    break;
+                case 10:
+                    $mask = '###.###.###-#';
+                    break;
+            endswitch;
+
+            return $this->_custom($value, $mask);
         }
-        
-        switch (strlen($value)):
-            case 8:
-                $mask = '#.###.###-#';
-                break;
-            case 9:
-                $mask = '##.###.###-#';
-                break;
-            case 10:
-                $mask = '###.###.###-#';
-                break;
-        endswitch;
-
-
-        return $this->_custom($value, $mask);
+        return $rgNumber;
     }
 
     /**
      * Format a phone
-     * @param string $val
+     * @param string $phoneNumber
      * @return string
      */
     protected function _phone($phoneNumber)
     {
-        $value = preg_replace('/[^0-9]/', '', $phoneNumber);
+        if (!empty($phoneNumber))
+        {
+            $value = preg_replace('/[^0-9]/', '', $phoneNumber);
 
-        switch (strlen($value)):
-            case 3:
-                if (!\Tools\Utily\Validate::phone($value, PhoneTypes::SERVICE))
-                {
-                    return __d('tools', 'Phone invalid');
-                }
-                $mask = '###';
-                break;
-            case 4:
-                if (!\Tools\Utily\Validate::phone($value, PhoneTypes::SERVICE))
-                {
-                    return __d('tools', 'Phone invalid');
-                }
-                $mask = '####';
-                break;
-            case 5:
-                if (!\Tools\Utily\Validate::phone($value, PhoneTypes::SERVICE))
-                {
-                    return __d('tools', 'Phone invalid');
-                }
-                $mask   = '#####';
-                break;
-            case 10:
-                $prefix = substr($value, 0, 4);
-                if (in_array($prefix, ['0300', '0500', '0800', '0900']))
-                {
-                    if (!\Tools\Utily\Validate::phone($value, PhoneTypes::NON_REGIONAL))
+            switch (strlen($value)):
+                case 3:
+                    if (!\Tools\Utily\Validate::phone($value, PhoneTypes::SERVICE))
                     {
                         return __d('tools', 'Phone invalid');
                     }
-                    $mask = '####-##-####';
-                } else
-                {
-                    if (!\Tools\Utily\Validate::phone($value))
+                    $mask = '###';
+                    break;
+                case 4:
+                    if (!\Tools\Utily\Validate::phone($value, PhoneTypes::SERVICE))
                     {
                         return __d('tools', 'Phone invalid');
                     }
-                    $mask = '(##) ####-####';
-                }
-                break;
-            case 11:
-                $prefix = substr($value, 0, 4);
-                if (in_array($prefix, ['0300', '0500', '0800', '0900']))
-                {
-                    if (!\Tools\Utily\Validate::phone($value, PhoneTypes::NON_REGIONAL))
+                    $mask = '####';
+                    break;
+                case 5:
+                    if (!\Tools\Utily\Validate::phone($value, PhoneTypes::SERVICE))
                     {
                         return __d('tools', 'Phone invalid');
                     }
-                    $mask = '####-###-####';
-                } else
-                {
-                    if (substr($value, 0, 1) == "0")
+                    $mask   = '#####';
+                    break;
+                case 10:
+                    $prefix = substr($value, 0, 4);
+                    if (in_array($prefix, ['0300', '0500', '0800', '0900']))
                     {
-                        if (!\Tools\Utily\Validate::phone($value))
+                        if (!\Tools\Utily\Validate::phone($value, PhoneTypes::NON_REGIONAL))
                         {
                             return __d('tools', 'Phone invalid');
                         }
-                        $mask = '(###) ####-####';
+                        $mask = '####-##-####';
                     } else
                     {
                         if (!\Tools\Utily\Validate::phone($value))
                         {
                             return __d('tools', 'Phone invalid');
                         }
-                        $mask = '(##) #####-####';
+                        $mask = '(##) ####-####';
                     }
-                }
-                break;
-            case 12:
-                if (substr($value, 0, 1) == "0")
-                {
-                    if (!\Tools\Utily\Validate::phone($value, PhoneTypes::CELLPHONE))
+                    break;
+                case 11:
+                    $prefix = substr($value, 0, 4);
+                    if (in_array($prefix, ['0300', '0500', '0800', '0900']))
+                    {
+                        if (!\Tools\Utily\Validate::phone($value, PhoneTypes::NON_REGIONAL))
+                        {
+                            return __d('tools', 'Phone invalid');
+                        }
+                        $mask = '####-###-####';
+                    } else
+                    {
+                        if (substr($value, 0, 1) == "0")
+                        {
+                            if (!\Tools\Utily\Validate::phone($value))
+                            {
+                                return __d('tools', 'Phone invalid');
+                            }
+                            $mask = '(###) ####-####';
+                        } else
+                        {
+                            if (!\Tools\Utily\Validate::phone($value))
+                            {
+                                return __d('tools', 'Phone invalid');
+                            }
+                            $mask = '(##) #####-####';
+                        }
+                    }
+                    break;
+                case 12:
+                    if (substr($value, 0, 1) == "0")
+                    {
+                        if (!\Tools\Utily\Validate::phone($value, PhoneTypes::CELLPHONE))
+                        {
+                            return __d('tools', 'Phone invalid');
+                        }
+                        $mask = '(###) #####-####';
+                    } else
                     {
                         return __d('tools', 'Phone invalid');
                     }
-                    $mask = '(###) #####-####';
-                } else
-                {
+                    break;
+                default :
                     return __d('tools', 'Phone invalid');
-                }
-                break;
-            default :
-                return __d('tools', 'Phone invalid');
-                break;
-        endswitch;
+                    break;
+            endswitch;
 
-        return $this->_custom($value, $mask);
+            return $this->_custom($value, $mask);
+        }
+        return $phoneNumber;
     }
 
     /**
      * Format a CPF
-     * @param string $cpfNumber
+     * @param string $cepNumber
      * @return string
      */
     protected function _cep($cepNumber)
     {
-        $value = preg_replace('/[^0-9]/', '', strval($cepNumber));
-
-        if (!\Tools\Utily\Validate::cep($value))
+        if (!empty($cepNumber))
         {
-            return __d('tools', 'CEP invalid');
+            $value = preg_replace('/[^0-9]/', '', strval($cepNumber));
+
+            if (!\Tools\Utily\Validate::cep($value))
+            {
+                return __d('tools', 'CEP invalid');
+            }
+
+            $mask = '##.###-###';
+
+            return $this->_custom($value, $mask);
         }
-
-        $mask = '##.###-###';
-
-        return $this->_custom($value, $mask);
+        return $cepNumber;
     }
-    
+
     /**
      * Format a custom mask
-     * @param string $val
+     * @param string $value
      * @param string $mask
      * @return string
      */
