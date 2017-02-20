@@ -15,6 +15,7 @@ namespace Tools\Traits;
  */
 trait LoremIpsumTrait
 {
+
     /**
      * First
      *
@@ -34,7 +35,7 @@ trait LoremIpsumTrait
      * @access private
      * @var    array
      */
-    protected $words  = array(
+    protected $words = array(
         // Lorem ipsum...
         'lorem', 'ipsum', 'dolor', 'sit',
         'amet', 'consectetur', 'adipiscing', 'elit',
@@ -379,4 +380,5 @@ trait LoremIpsumTrait
         }
         return $strings;
     }
+
 }

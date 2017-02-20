@@ -16,7 +16,7 @@ namespace Tools\Traits;
 trait TableTrait
 {
     /**
-     * Retira espaços antes ou depois dos dados enviados
+     * Remove spaces before and/or after send data
      * @param \ArrayObject $data
      * @return \ArrayObject
      */
@@ -33,7 +33,7 @@ trait TableTrait
     }
     
     /**
-     * Formata um nome
+     * Format a name
      * @param string $name
      * @return string
      */
@@ -58,7 +58,7 @@ trait TableTrait
     }
 
     /**
-     * Remove mascara de itens com numero
+     * Remove mask from numbered items
      * @param string $value
      * @return string
      */
@@ -67,6 +67,13 @@ trait TableTrait
         return preg_replace('/[^0-9]/', '', $value);
     }
     
+    
+    /**
+     * Converts a Brazilian date to the database format
+     * @param string $date Ex.: 20/02/2017; 20/02/17; 20-02-2017; 20-02-17
+     * @return \Cake\I18n\Time
+     * @throws \Cake\Error\FatalErrorException
+     */
     private function brDataToDbDate($date)
     {
         if(strlen($date) == 8 or strlen($date) == 10)
@@ -79,28 +86,28 @@ trait TableTrait
                 $dateArray = explode('/', $date);
             }else
             {
-                throw new \Cake\Error\FatalErrorException(__d('tools', 'Formado de data inválido'));
+                throw new \Cake\Error\FatalErrorException(__d('tools', 'Invalid date format'));
             }
             
             if($dateArray[0] < 1 or $dateArray[0] > 31)
             {
-                throw new \Cake\Error\FatalErrorException(__d('tools', 'Dia da data está em {0} deve estar entre 1 e 31.', $dateArray[0]));
+                throw new \Cake\Error\FatalErrorException(__d('tools', 'Date day is on {0} must be between 1 and 31.', $dateArray[0]));
             }
             
             if($dateArray[1] < 1 or $dateArray[1] > 12)
             {
-                throw new \Cake\Error\FatalErrorException(__d('tools', 'Mês da data está em {0} deve estar entre 1 e 12.', $dateArray[1]));
+                throw new \Cake\Error\FatalErrorException(__d('tools', 'Date month is on {0} must be between 1 and 12.', $dateArray[1]));
             }
             
             if($dateArray[2] < 1 or $dateArray[2] > 3000)
             {
-                throw new \Cake\Error\FatalErrorException(__d('tools', 'Ano da data está em {0} deve estar entre 1 e 3000.', $dateArray[2]));
+                throw new \Cake\Error\FatalErrorException(__d('tools', 'Date year is on {0} must be between 1 and 3000.', $dateArray[2]));
             }
             
             return new \Cake\I18n\Time("{$dateArray[2]}-{$dateArray[1]}-{$dateArray[0]}");
         }else
         {
-            throw new \Cake\Error\FatalErrorException(__d('tools', 'Formado de data inválido'));
+            throw new \Cake\Error\FatalErrorException(__d('tools', 'Invalid date format'));
         }
     }
     

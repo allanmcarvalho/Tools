@@ -14,6 +14,12 @@ use Tools\Abstracts\PhoneTypes;
 trait ValidateTrait
 {
 
+    /**
+     * Take the validator digit
+     * @param string $numbers
+     * @param bool $second
+     * @return string
+     */
     private function _getCpfDigitsSum($numbers, $second = false)
     {
         if ($second == false)
@@ -33,6 +39,12 @@ trait ValidateTrait
         return $sumOfNumbers;
     }
 
+    /**
+     * Take the validator digit
+     * @param string $numbers
+     * @param bool $second
+     * @return string
+     */
     private function _getCnpjDigitsSum($numbers, $second = false)
     {
         $sumOfNumbers = 0;
@@ -71,6 +83,11 @@ trait ValidateTrait
         return $sumOfNumbers;
     }
 
+    /**
+     * Take the validator digit
+     * @param string $sum
+     * @return string
+     */
     private function _getCpfCnpjVerificationDigit($sum)
     {
         $sum = $sum % 11;
@@ -83,6 +100,11 @@ trait ValidateTrait
         }
     }
 
+    /**
+     * Checks if a CPF is valid
+     * @param string $cpfNumber
+     * @return boolean
+     */
     protected function _cpf($cpfNumber = null)
     {
         if ($cpfNumber == null)
@@ -110,6 +132,11 @@ trait ValidateTrait
         }
     }
 
+    /**
+     * Checks if a CNPJ is valid
+     * @param string $cnpjNumber
+     * @return boolean
+     */
     protected function _cnpj($cnpjNumber = null)
     {
         if ($cnpjNumber == null)
@@ -137,6 +164,11 @@ trait ValidateTrait
         }
     }
 
+    /**
+     * Checks if a RG is valid
+     * @param string $rgNumber
+     * @return boolean
+     */
     protected function _rg($rgNumber = null)
     {
         if ($rgNumber == null)
@@ -147,6 +179,12 @@ trait ValidateTrait
         return ((bool) preg_match('/^([0-9]{8}|[0-9]{9}|[0-9]{10})$/', $value));
     }
 
+    /**
+     * Checks if a phone is valid
+     * @param string $phoneNumber
+     * @param PhoneTypes $type
+     * @return boolean
+     */
     protected function _phone($phoneNumber = null, $type = null)
     {
         if ($phoneNumber == null)
@@ -159,16 +197,16 @@ trait ValidateTrait
         {
             if (in_array(substr($value, 0, 4), ['0800', '0300', '0500', '0900']))
             {
-                $type = PhoneTypes::NAO_GEOGRAFICOS;
+                $type = PhoneTypes::NON_REGIONAL;
             }
 
             if (strlen($value) >= 3 and strlen($value) <= 5)
             {
-                $type = PhoneTypes::SERVICO;
+                $type = PhoneTypes::SERVICE;
             }
         }
 
-        if ($type === PhoneTypes::PADRAO)
+        if ($type === PhoneTypes::BASIC)
         {
             return ((bool) preg_match('/^('
                             . '[1-9]{2}[1-9]{1}[0-9]{3}[0-9]{4}'
@@ -178,7 +216,7 @@ trait ValidateTrait
                             . ')$/', $value));
         }
 
-        if ($type === PhoneTypes::TELEFONE)
+        if ($type === PhoneTypes::TELEPHONE)
         {
             return ((bool) preg_match('/^('
                             . '[1-9]{2}[1-4]{1}[0-9]{3}[0-9]{4}'
@@ -186,7 +224,7 @@ trait ValidateTrait
                             . ')$/', $value));
         }
 
-        if ($type === PhoneTypes::CELULAR)
+        if ($type === PhoneTypes::CELLPHONE)
         {
             return ((bool) preg_match('/^('
                             . '[1-9]{2}[5-9]{1}[0-9]{3}[0-9]{4}'
@@ -196,7 +234,7 @@ trait ValidateTrait
                             . ')$/', $value));
         }
 
-        if ($type === PhoneTypes::NAO_GEOGRAFICOS)
+        if ($type === PhoneTypes::NON_REGIONAL)
         {
             return ((bool) preg_match('/^('
                             . '[0][3,5,8,9][0]{2}[0-9]{3}[0-9]{4}'
@@ -204,7 +242,7 @@ trait ValidateTrait
                             . ')$/', $value));
         }
 
-        if ($type === PhoneTypes::SERVICO)
+        if ($type === PhoneTypes::SERVICE)
         {
             return ((bool) preg_match('/^('
                             . '[1][0-9]{2}'
@@ -215,6 +253,11 @@ trait ValidateTrait
         return false;
     }
 
+    /**
+     * Checks if a CEP is valid
+     * @param string $cepNumber
+     * @return boolean
+     */
     protected function _cep($cepNumber = null)
     {
         if ($cepNumber == null)

@@ -20,7 +20,7 @@ class ValidateHelper extends Helper
     use ValidateTrait;
     
     /**
-     * Valida um CPF
+     * Validate a CPF
      * @param string $cpfNumber numero com ou sem mascara contendo 11 dígitos
      * @return bool
      */
@@ -30,7 +30,7 @@ class ValidateHelper extends Helper
     }
     
     /**
-     * Valida um CNPJ
+     * Validate a CNPJ
      * @param string $cnpjNumber numero com ou sem mascara contendo 14 dígitos
      * @return bool
      */
@@ -40,7 +40,7 @@ class ValidateHelper extends Helper
     }
     
     /**
-     * Valida um RG
+     * Validate a RG
      * @param string $rgNumber numero com ou sem mascara contendo de 8 a 10 dígitos
      * @return bool
      */
@@ -50,7 +50,7 @@ class ValidateHelper extends Helper
     }
     
     /**
-     * Valida um telefone
+     * Validate a phone
      * @param string $phoneNumber numero de telefone. Tamanho varia de acordo com o tipo
      * @param \Tools\Abstracts\PhoneTypes $type
      * @return bool
@@ -61,7 +61,7 @@ class ValidateHelper extends Helper
     }
     
     /**
-     * Valida um cep
+     * Validate a cep
      * @param string $cepNumber numero do cep contendo 8 dígitos
      * @return bool
      */

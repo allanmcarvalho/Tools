@@ -20,8 +20,8 @@ class Mask
     use MaskTrait;
     
     /**
-     * Formata um CPF
-     * @param string $cpfNumber numero do cpf a ser formatado
+     * Format a CPF
+     * @param string $cpfNumber CPF number to be formatted
      * @return string
      */
     public static function cpf($cpfNumber)
@@ -31,8 +31,8 @@ class Mask
     }
     
     /**
-     * Formata um CNPJ
-     * @param string $cnpjNumber numero do cnpj a ser formatado
+     * Format a CNPJ
+     * @param string $cnpjNumber CNPJ number to be formatted
      * @return string
      */
     public static function cnpj($cnpjNumber)
@@ -42,8 +42,8 @@ class Mask
     }
     
     /**
-     * Formata um RG
-     * @param string $rgNumber numero do rg a ser formatado 
+     * Format a RG
+     * @param string $rgNumber RG number to be formatted 
      * @return string
      */
     public static function rg($rgNumber)
@@ -53,8 +53,8 @@ class Mask
     }
     
     /**
-     * Foramta um numero de Telefone
-     * @param string $phoneNumber numero de telefone a ser formatado
+     * Foramt a phone number
+     * @param string $phoneNumber PHONE number to be formatted
      * @return string
      */
     public static function phone($phoneNumber)
@@ -64,8 +64,8 @@ class Mask
     }
     
     /**
-     * Formata um CEP
-     * @param string $cepNumber numero do CEP a ser formatado
+     * Format a CEP
+     * @param string $cepNumber CEP number to be formatted
      * @return string
      */
     public static function cep($cepNumber)
@@ -75,7 +75,7 @@ class Mask
     }
     
     /**
-     * Formata uma mascara customizada
+     * Format a custom mask
      * @param string $value
      * @param string $mask
      * @return string

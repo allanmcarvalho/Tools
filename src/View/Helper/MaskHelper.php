@@ -24,8 +24,8 @@ class MaskHelper extends Helper
     ];
     
     /**
-     * Formata um CPF
-     * @param string $cpfNumber numero do cpf a ser formatado
+     * Format a CPF
+     * @param string $cpfNumber
      * @return string
      */
     public function cpf($cpfNumber)
@@ -34,8 +34,8 @@ class MaskHelper extends Helper
     }
     
     /**
-     * Formata um CNPJ
-     * @param string $cnpjNumber numero do cnpj a ser formatado
+     * Format a CNPJ
+     * @param string $cnpjNumber
      * @return string
      */
     public function cnpj($cnpjNumber)
@@ -44,8 +44,8 @@ class MaskHelper extends Helper
     }
     
     /**
-     * Formata um RG
-     * @param string $rgNumber numero do rg a ser formatado 
+     * Format a RG
+     * @param string $rgNumber
      * @return string
      */
     public function rg($rgNumber)
@@ -54,8 +54,8 @@ class MaskHelper extends Helper
     }
     
     /**
-     * Foramta um numero de Telefone
-     * @param string $phoneNumber numero de telefone a ser formatado
+     * Format a phone number
+     * @param string $phoneNumber
      * @return string
      */
     public function phone($phoneNumber)
@@ -64,8 +64,8 @@ class MaskHelper extends Helper
     }
     
     /**
-     * Formata um CEP
-     * @param string $cepNumber numero do CEP a ser formatado
+     * Format a CEP
+     * @param string $cepNumber
      * @return string
      */
     public function cep($cepNumber)
@@ -74,7 +74,7 @@ class MaskHelper extends Helper
     }
     
     /**
-     * Formata uma mascara customizada
+     * Format a custom mask
      * @param string $value
      * @param string $mask
      * @return string

@@ -16,7 +16,7 @@ namespace Tools\Validation;
 class ToolsValidation
 {
     /**
-     * Valida um CPF
+     * Validate a CPF
      * @param string $cpfNumber
      * @return bool
      */
@@ -26,7 +26,7 @@ class ToolsValidation
     }
     
     /**
-     * Valida um CNPJ
+     * Validate a CNPJ
      * @param string $cnpjNumber
      * @return bool
      */
@@ -36,7 +36,7 @@ class ToolsValidation
     }
     
     /**
-     * Valida um RG
+     * Validate a RG
      * @param string $rgNumber
      * @return bool
      */
@@ -46,7 +46,7 @@ class ToolsValidation
     }
     
     /**
-     * Valida um Telefone
+     * Validate a Phone
      * @param string $phoneNumber
      * @return bool
      */
@@ -56,7 +56,7 @@ class ToolsValidation
     }
     
     /**
-     * Valida um Telefone Fixo
+     * Validate a Telephone
      * @param string $phoneNumber
      * @return bool
      */
@@ -66,7 +66,7 @@ class ToolsValidation
     }
     
     /**
-     * Valida um Telefone Celular
+     * Validate a Cellphone
      * @param string $phoneNumber
      * @return bool
      */
@@ -76,7 +76,7 @@ class ToolsValidation
     }
     
     /**
-     * Valida um Telefone Fixo
+     * Validate a Service phone
      * @param string $phoneNumber
      * @return bool
      */
@@ -86,7 +86,7 @@ class ToolsValidation
     }
     
     /**
-     * Valida um Telefone não regional
+     * Validate a Non Regional Phone
      * @param string $phoneNumber
      * @return bool
      */
@@ -96,7 +96,7 @@ class ToolsValidation
     }
     
     /**
-     * Valida um cep
+     * Validate a cep
      * @param string $cepNumber
      * @return bool
      */
@@ -106,8 +106,8 @@ class ToolsValidation
     }
     
     /**
-     * Valida um usuário
-     * @param string $value não permite caracteres especiais, e nem que comece com um numero
+     * Validate a username
+     * @param string $value Does not allow special characters, nor does it start with a number
      * @return bool
      */
     public static function username($value)

@@ -9,17 +9,17 @@
 namespace Tools\Abstracts;
 
 /**
- * Description of PhoneTypes
+ * Description of FontAwesomeIcons
  *
  * @author allan
  */
-abstract class PhoneTypes
+abstract class FASize
 {
 
-    const BASIC        = 0;
-    const TELEPHONE    = 1;
-    const CELLPHONE    = 2;
-    const NON_REGIONAL = 3;
-    const SERVICE      = 4;
+    const FA_LG         = "fa-lg";
+    const FA_2X         = "fa-2x";
+    const FA_3X         = "fa-3x";
+    const FA_4X         = "fa-4x";
+    const FA_5X         = "fa-5x";
 
 }

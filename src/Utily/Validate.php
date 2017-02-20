@@ -19,8 +19,8 @@ class Validate
     use ValidateTrait;
     
     /**
-     * Valida um CPF
-     * @param string $cpfNumber numero com ou sem mascara contendo 11 dígitos
+     * Validate a CPF
+     * @param string $cpfNumber Number with or without mask containing 11 digits
      * @return bool
      */
     public static function cpf($cpfNumber)
@@ -30,8 +30,8 @@ class Validate
     }
     
     /**
-     * Valida um CNPJ
-     * @param string $cnpjNumber numero com ou sem mascara contendo 14 dígitos
+     * Validate a CNPJ
+     * @param string $cnpjNumber Number with or without mask containing 14 digits
      * @return bool
      */
     public static function cnpj($cnpjNumber)
@@ -41,8 +41,8 @@ class Validate
     }
     
     /**
-     * Valida um RG
-     * @param string $rgNumber numero com ou sem mascara contendo de 8 a 10 dígitos
+     * Validate a RG
+     * @param string $rgNumber Number with or without mask containing 8 to 11 digits
      * @return bool
      */
     public static function rg($rgNumber)
@@ -52,8 +52,8 @@ class Validate
     }
     
     /**
-     * Valida um telefone
-     * @param string $phoneNumber numero de telefone. Tamanho varia de acordo com o tipo
+     * Validate a phone
+     * @param string $phoneNumber
      * @param \Tools\Abstracts\PhoneTypes $type
      * @return bool
      */
@@ -64,8 +64,8 @@ class Validate
     }
     
     /**
-     * Valida um cep
-     * @param string $cepNumber numero do cep contendo 8 dígitos
+     * Validate a cep
+     * @param string $cepNumber Number with or without mask containing 8 digits
      * @return bool
      */
     public static function cep($cepNumber)

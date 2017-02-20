@@ -25,7 +25,7 @@ trait MaskTrait
 
         if (!\Tools\Utily\Validate::cpf($value))
         {
-            return __d('tools', 'CPF inválido');
+            return __d('tools', 'CPF invalid');
         }
 
         $mask = '###.###.###-##';
@@ -44,7 +44,7 @@ trait MaskTrait
 
         if (!\Tools\Utily\Validate::cnpj($value))
         {
-            return __d('tools', 'CNPJ inválido');
+            return __d('tools', 'CNPJ invalid');
         }
 
         $mask = '##.###.###/####-##';
@@ -63,7 +63,7 @@ trait MaskTrait
 
         if (!\Tools\Utily\Validate::rg($value))
         {
-            return __d('tools', 'RG inválido');
+            return __d('tools', 'RG invalid');
         }
         
         switch (strlen($value)):
@@ -93,23 +93,23 @@ trait MaskTrait
 
         switch (strlen($value)):
             case 3:
-                if (!\Tools\Utily\Validate::phone($value, PhoneTypes::SERVICO))
+                if (!\Tools\Utily\Validate::phone($value, PhoneTypes::SERVICE))
                 {
-                    return __d('tools', 'Telefone inválido');
+                    return __d('tools', 'Phone invalid');
                 }
                 $mask = '###';
                 break;
             case 4:
-                if (!\Tools\Utily\Validate::phone($value, PhoneTypes::SERVICO))
+                if (!\Tools\Utily\Validate::phone($value, PhoneTypes::SERVICE))
                 {
-                    return __d('tools', 'Telefone inválido');
+                    return __d('tools', 'Phone invalid');
                 }
                 $mask = '####';
                 break;
             case 5:
-                if (!\Tools\Utily\Validate::phone($value, PhoneTypes::SERVICO))
+                if (!\Tools\Utily\Validate::phone($value, PhoneTypes::SERVICE))
                 {
-                    return __d('tools', 'Telefone inválido');
+                    return __d('tools', 'Phone invalid');
                 }
                 $mask   = '#####';
                 break;
@@ -117,16 +117,16 @@ trait MaskTrait
                 $prefix = substr($value, 0, 4);
                 if (in_array($prefix, ['0300', '0500', '0800', '0900']))
                 {
-                    if (!\Tools\Utily\Validate::phone($value, PhoneTypes::NAO_GEOGRAFICOS))
+                    if (!\Tools\Utily\Validate::phone($value, PhoneTypes::NON_REGIONAL))
                     {
-                        return __d('tools', 'Telefone inválido');
+                        return __d('tools', 'Phone invalid');
                     }
                     $mask = '####-##-####';
                 } else
                 {
                     if (!\Tools\Utily\Validate::phone($value))
                     {
-                        return __d('tools', 'Telefone inválido');
+                        return __d('tools', 'Phone invalid');
                     }
                     $mask = '(##) ####-####';
                 }
@@ -135,9 +135,9 @@ trait MaskTrait
                 $prefix = substr($value, 0, 4);
                 if (in_array($prefix, ['0300', '0500', '0800', '0900']))
                 {
-                    if (!\Tools\Utily\Validate::phone($value, PhoneTypes::NAO_GEOGRAFICOS))
+                    if (!\Tools\Utily\Validate::phone($value, PhoneTypes::NON_REGIONAL))
                     {
-                        return __d('tools', 'Telefone inválido');
+                        return __d('tools', 'Phone invalid');
                     }
                     $mask = '####-###-####';
                 } else
@@ -146,14 +146,14 @@ trait MaskTrait
                     {
                         if (!\Tools\Utily\Validate::phone($value))
                         {
-                            return __d('tools', 'Telefone inválido');
+                            return __d('tools', 'Phone invalid');
                         }
                         $mask = '(###) ####-####';
                     } else
                     {
                         if (!\Tools\Utily\Validate::phone($value))
                         {
-                            return __d('tools', 'Telefone inválido');
+                            return __d('tools', 'Phone invalid');
                         }
                         $mask = '(##) #####-####';
                     }
@@ -162,18 +162,18 @@ trait MaskTrait
             case 12:
                 if (substr($value, 0, 1) == "0")
                 {
-                    if (!\Tools\Utily\Validate::phone($value, PhoneTypes::CELULAR))
+                    if (!\Tools\Utily\Validate::phone($value, PhoneTypes::CELLPHONE))
                     {
-                        return __d('tools', 'Telefone inválido');
+                        return __d('tools', 'Phone invalid');
                     }
                     $mask = '(###) #####-####';
                 } else
                 {
-                    return __d('tools', 'Telefone inválido');
+                    return __d('tools', 'Phone invalid');
                 }
                 break;
             default :
-                return __d('tools', 'Telefone inválido');
+                return __d('tools', 'Phone invalid');
                 break;
         endswitch;
 
@@ -191,7 +191,7 @@ trait MaskTrait
 
         if (!\Tools\Utily\Validate::cep($value))
         {
-            return __d('tools', 'CEP inválido');
+            return __d('tools', 'CEP invalid');
         }
 
         $mask = '##.###-###';
@@ -233,7 +233,7 @@ trait MaskTrait
             return $maskared;
         } else
         {
-            return __d('tools', '"mascara" e "valor" não são compativeis');
+            return __d('tools', '"mask" and "value" are not compatible');
         }
     }
 
