@@ -20,7 +20,7 @@ trait TableTrait
      * @param \ArrayObject $data
      * @return \ArrayObject
      */
-    private function trimFields($data)
+    private function _trimFields($data)
     {
         foreach ($data as $item => $value)
         {
@@ -37,7 +37,7 @@ trait TableTrait
      * @param string $name
      * @return string
      */
-    private function formatName($name)
+    private function _formatName($name)
     {
         $name = ucwords(strtolower($name));
         $name = str_replace(
@@ -62,7 +62,7 @@ trait TableTrait
      * @param string $value
      * @return string
      */
-    private function removeMaskFromNumbers($value)
+    private function _removeMaskFromNumbers($value)
     {
         return preg_replace('/[^0-9]/', '', $value);
     }
@@ -74,7 +74,7 @@ trait TableTrait
      * @return \Cake\I18n\Time
      * @throws \Cake\Error\FatalErrorException
      */
-    private function brDataToDbDate($date)
+    private function _brDataToDbDate($date)
     {
         if(strlen($date) == 8 or strlen($date) == 10)
         {
