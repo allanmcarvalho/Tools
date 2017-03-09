@@ -62,7 +62,7 @@ class ToolsValidation
      */
     public static function telephone($phoneNumber)
     {
-        return (bool) \Tools\Utily\Validate::phone($phoneNumber, \Tools\Abstracts\PhoneTypes::TELEFONE);
+        return (bool) \Tools\Utily\Validate::phone($phoneNumber, \Tools\Abstracts\PhoneTypes::TELEPHONE);
     }
     
     /**
@@ -72,7 +72,7 @@ class ToolsValidation
      */
     public static function cellphone($phoneNumber)
     {
-        return (bool) \Tools\Utily\Validate::phone($phoneNumber, \Tools\Abstracts\PhoneTypes::CELULAR);
+        return (bool) \Tools\Utily\Validate::phone($phoneNumber, \Tools\Abstracts\PhoneTypes::CELLPHONE);
     }
     
     /**
@@ -82,7 +82,7 @@ class ToolsValidation
      */
     public static function servicePhone($phoneNumber)
     {
-        return (bool) \Tools\Utily\Validate::phone($phoneNumber, \Tools\Abstracts\PhoneTypes::SERVICO);
+        return (bool) \Tools\Utily\Validate::phone($phoneNumber, \Tools\Abstracts\PhoneTypes::SERVICE);
     }
     
     /**
@@ -92,7 +92,7 @@ class ToolsValidation
      */
     public static function nonRegionalPhone($phoneNumber)
     {
-        return (bool) \Tools\Utily\Validate::phone($phoneNumber, \Tools\Abstracts\PhoneTypes::NAO_GEOGRAFICOS);
+        return (bool) \Tools\Utily\Validate::phone($phoneNumber, \Tools\Abstracts\PhoneTypes::NON_REGIONAL);
     }
     
     /**
