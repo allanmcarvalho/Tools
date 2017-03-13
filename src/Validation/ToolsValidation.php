@@ -106,6 +106,19 @@ class ToolsValidation
     }
     
     /**
+     * Check if birthdate is great than minimum
+     * @param \Cake\I18n\Time $birthdate
+     * @param int $minimumAge
+     * @return bool
+     */
+    public static function minimumAge(\Cake\I18n\Time $birthdate, $minimumAge)
+    {
+        $minimumBirthdate = new \Cake\I18n\Time();
+        $minimumBirthdate->modify("- $minimumAge years");
+        return $birthdate > $minimumBirthdate ? false : true;
+    }
+
+    /**
      * Validate a username
      * @param string $value Does not allow special characters, nor does it start with a number
      * @return bool
