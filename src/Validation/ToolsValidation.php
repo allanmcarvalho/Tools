@@ -107,15 +107,74 @@ class ToolsValidation
     
     /**
      * Check if birthdate is great than minimum
-     * @param \Cake\I18n\Time $birthdate
+     * @param mixed $birthdate
      * @param int $minimumAge
      * @return bool
      */
-    public static function minimumAge(\Cake\I18n\Time $birthdate, $minimumAge)
+    public static function minimumAge($birthdate, $minimumAge, $format)
     {
+        if(!is_a($birthdate, '\Cake\I18n\Time'))
+        {
+            if(is_array($format))
+            {
+                $format = 'd/m/Y';
+            }
+            $birthdate = \Cake\I18n\Time::createFromFormat($format, $birthdate);
+        }
+        
         $minimumBirthdate = new \Cake\I18n\Time();
         $minimumBirthdate->modify("- $minimumAge years");
         return $birthdate > $minimumBirthdate ? false : true;
+    }
+    
+    /**
+     * 
+     * @param mixed $datetime
+     * @param string $modify
+     * @param string $format
+     * @return bool
+     */
+    public static function dateGreaterThan($datetime, $modify, $format)
+    {
+        
+        if(!is_a($datetime, '\Cake\I18n\Time'))
+        {
+            if(is_array($format))
+            {
+                $format = 'd/m/Y';
+            }
+            $datetime = \Cake\I18n\Time::createFromFormat($format, $datetime);
+        }
+        
+        $checkDate = \Cake\I18n\Time::now();
+        $checkDate->modify($modify);
+       
+        return $datetime > $checkDate ? true : false;
+    }
+    
+    /**
+     * 
+     * @param mixed $datetime
+     * @param string $modify
+     * @param string $format
+     * @return bool
+     */
+    public static function dateLessThan($datetime, $modify, $format)
+    {
+        
+        if(!is_a($datetime, '\Cake\I18n\Time'))
+        {
+            if(is_array($format))
+            {
+                $format = 'd/m/Y';
+            }
+            $datetime = \Cake\I18n\Time::createFromFormat($format, $datetime);
+        }
+        
+        $checkDate = \Cake\I18n\Time::now();
+        $checkDate->modify($modify);
+       
+        return $datetime < $checkDate ? true : false;
     }
 
     /**
