@@ -82,5 +82,16 @@ class MaskHelper extends Helper
     public function custom($value, $mask)
     {
         return $this->_custom($value, $mask);
+    } 
+    
+    /**
+     * Transform number in string
+     * @param double $value
+     * @param int $type
+     * @return string
+     */
+    public function writterNumber($value, $type)
+    {
+        return \Tools\Utily\WrittenNumber::number($value, $type);
     }
 }
