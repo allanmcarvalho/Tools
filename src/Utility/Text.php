@@ -69,7 +69,7 @@ class Text
      * @param string $string
      * @return string
      */
-    public function formatUcFirst($string)
+    public static function formatUcFirst($string)
     {
         $text = new Text();
         return $text->_formatUcFirst($string);
