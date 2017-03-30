@@ -127,7 +127,7 @@ trait TextTrait
             if ($key == 0)
             {
                 $first             = strtoupper(substr($word, 0, 1));
-                $leftover          = $this->strReplace($this->accentsUppercase, $this->accentsLowercase, strtolower(substr($word, 1)));
+                $leftover          = str_replace($this->accentsUppercase, $this->accentsLowercase, strtolower(substr($word, 1)));
                 $stringArray[$key] = $first . $leftover;
             }
             if ($stringArray[$key] == null)
@@ -138,7 +138,7 @@ trait TextTrait
             if (strlen($word) > 1 and ! in_array($word, $this->stringMaintainList) and $key > 0)
             {
                 $first             = substr($word, 0, 1);
-                $leftover          = $this->strReplace($this->accentsUppercase, $this->accentsLowercase, strtolower(substr($word, 1)));
+                $leftover          = str_replace($this->accentsUppercase, $this->accentsLowercase, strtolower(substr($word, 1)));
                 $stringArray[$key] = $first . $leftover;
             }
         }
