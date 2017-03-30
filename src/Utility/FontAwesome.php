@@ -6,7 +6,7 @@
  * and open the template in the editor.
  */
 
-namespace Tools\Utily;
+namespace Tools\Utility;
 
 use Tools\Traits\FontAwesomeTrait;
 

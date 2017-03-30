@@ -58,16 +58,31 @@ trait TextTrait
         return trim(implode(' ', $nameArray));
     }
     
+    /**
+     * Format a personal name
+     * @param string $name
+     * @return string
+     */
     private function _formatPersonalName($name)
     {
         return $this->_formatName(preg_replace('/[^a-zA-Z0-9 ]/', '', $name));
     }
     
+    /**
+     * Format a company name
+     * @param string $name
+     * @return string
+     */
     private function _formatCompanyName($name)
     {
         return $this->_formatName(preg_replace('/[^a-zA-Z0-9& ]/', '', $name));
     }
     
+    /**
+     * Format a address name
+     * @param string $name
+     * @return string
+     */
     private function _formatAddressName($name, $abbreviate = true)
     {
         $address = $this->_formatName(preg_replace('/[^a-zA-Z0-9 ]/', '', $name));

@@ -6,7 +6,7 @@
  * and open the template in the editor.
  */
 
-namespace Tools\Utily;
+namespace Tools\Utility;
 
 use Tools\Traits\TextTrait;
 
@@ -22,16 +22,17 @@ class Text
     /**
      * Format a name
      * @param string $name
+     * @param bool $abbreviate
      * @return string
      */
-    public static function formatName($name)
+    public static function formatName($name, $abbreviate = true)
     {
         $text = new Text();
-        return $text->_formatName($name);
+        return $text->_formatAddressName($name, $abbreviate);
     }
     
     /**
-     * Format a name
+     * Format a personal name
      * @param string $name
      * @return string
      */
@@ -42,7 +43,7 @@ class Text
     }
 
     /**
-     * Format a name
+     * Format a company name
      * @param string $name
      * @return string
      */
@@ -53,7 +54,7 @@ class Text
     }
     
     /**
-     * Format a name
+     * Format a address name
      * @param string $name
      * @return string
      */
