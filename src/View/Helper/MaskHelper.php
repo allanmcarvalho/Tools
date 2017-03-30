@@ -92,6 +92,6 @@ class MaskHelper extends Helper
      */
     public function writterNumber($value, $type)
     {
-        return \Tools\Utily\WrittenNumber::number($value, $type);
+        return \Tools\Utility\WrittenNumber::number($value, $type);
     }
 }

@@ -27,7 +27,7 @@ trait MaskTrait
         {
             $value = preg_replace('/[^0-9]/', '', strval($cpfNumber));
 
-            if (!\Tools\Utily\Validate::cpf($value))
+            if (!\Tools\Utility\Validate::cpf($value))
             {
                 Log::write(LogLevel::ALERT, __d('tools', 'CPF {0} invalid', $cpfNumber));
                 return __d('tools', 'CPF invalid');
@@ -50,7 +50,7 @@ trait MaskTrait
         {
             $value = preg_replace('/[^0-9]/', '', $cnpjNumber);
 
-            if (!\Tools\Utily\Validate::cnpj($value))
+            if (!\Tools\Utility\Validate::cnpj($value))
             {
                 Log::write(LogLevel::ALERT, __d('tools', 'CNPJ {0} invalid', $cnpjNumber));
                 return __d('tools', 'CNPJ invalid');
@@ -74,7 +74,7 @@ trait MaskTrait
         {
             $value = preg_replace('/[^0-9]/', '', $rgNumber);
 
-            if (!\Tools\Utily\Validate::rg($value))
+            if (!\Tools\Utility\Validate::rg($value))
             {
                 Log::write(LogLevel::ALERT, __d('tools', 'RG {0} invalid', $rgNumber));
                 return __d('tools', 'RG invalid');
@@ -110,7 +110,7 @@ trait MaskTrait
 
             switch (strlen($value)):
                 case 3:
-                    if (!\Tools\Utily\Validate::phone($value, PhoneTypes::SERVICE))
+                    if (!\Tools\Utility\Validate::phone($value, PhoneTypes::SERVICE))
                     {
                         Log::write(LogLevel::ALERT, __d('tools', 'Phone {0} invalid', $phoneNumber));
                         return __d('tools', 'Phone invalid');
@@ -118,7 +118,7 @@ trait MaskTrait
                     $mask = '###';
                     break;
                 case 4:
-                    if (!\Tools\Utily\Validate::phone($value, PhoneTypes::SERVICE))
+                    if (!\Tools\Utility\Validate::phone($value, PhoneTypes::SERVICE))
                     {
                         Log::write(LogLevel::ALERT, __d('tools', 'Phone {0} invalid', $phoneNumber));
                         return __d('tools', 'Phone invalid');
@@ -126,7 +126,7 @@ trait MaskTrait
                     $mask = '####';
                     break;
                 case 5:
-                    if (!\Tools\Utily\Validate::phone($value, PhoneTypes::SERVICE))
+                    if (!\Tools\Utility\Validate::phone($value, PhoneTypes::SERVICE))
                     {
                         Log::write(LogLevel::ALERT, __d('tools', 'Phone {0} invalid', $phoneNumber));
                         return __d('tools', 'Phone invalid');
@@ -137,7 +137,7 @@ trait MaskTrait
                     $prefix = substr($value, 0, 4);
                     if (in_array($prefix, ['0300', '0500', '0800', '0900']))
                     {
-                        if (!\Tools\Utily\Validate::phone($value, PhoneTypes::NON_REGIONAL))
+                        if (!\Tools\Utility\Validate::phone($value, PhoneTypes::NON_REGIONAL))
                         {
                             Log::write(LogLevel::ALERT, __d('tools', 'Phone {0} invalid', $phoneNumber));
                             return __d('tools', 'Phone invalid');
@@ -145,7 +145,7 @@ trait MaskTrait
                         $mask = '####-##-####';
                     } else
                     {
-                        if (!\Tools\Utily\Validate::phone($value))
+                        if (!\Tools\Utility\Validate::phone($value))
                         {
                             Log::write(LogLevel::ALERT, __d('tools', 'Phone {0} invalid', $phoneNumber));
                             return __d('tools', 'Phone invalid');
@@ -157,7 +157,7 @@ trait MaskTrait
                     $prefix = substr($value, 0, 4);
                     if (in_array($prefix, ['0300', '0500', '0800', '0900']))
                     {
-                        if (!\Tools\Utily\Validate::phone($value, PhoneTypes::NON_REGIONAL))
+                        if (!\Tools\Utility\Validate::phone($value, PhoneTypes::NON_REGIONAL))
                         {
                             Log::write(LogLevel::ALERT, __d('tools', 'Phone {0} invalid', $phoneNumber));
                             return __d('tools', 'Phone invalid');
@@ -167,7 +167,7 @@ trait MaskTrait
                     {
                         if (substr($value, 0, 1) == "0")
                         {
-                            if (!\Tools\Utily\Validate::phone($value))
+                            if (!\Tools\Utility\Validate::phone($value))
                             {
                                 Log::write(LogLevel::ALERT, __d('tools', 'Phone {0} invalid', $phoneNumber));
                                 return __d('tools', 'Phone invalid');
@@ -175,7 +175,7 @@ trait MaskTrait
                             $mask = '(###) ####-####';
                         } else
                         {
-                            if (!\Tools\Utily\Validate::phone($value))
+                            if (!\Tools\Utility\Validate::phone($value))
                             {
                                 Log::write(LogLevel::ALERT, __d('tools', 'Phone {0} invalid', $phoneNumber));
                                 return __d('tools', 'Phone invalid');
@@ -187,7 +187,7 @@ trait MaskTrait
                 case 12:
                     if (substr($value, 0, 1) == "0")
                     {
-                        if (!\Tools\Utily\Validate::phone($value, PhoneTypes::CELLPHONE))
+                        if (!\Tools\Utility\Validate::phone($value, PhoneTypes::CELLPHONE))
                         {
                             Log::write(LogLevel::ALERT, __d('tools', 'Phone {0} invalid', $phoneNumber));
                             return __d('tools', 'Phone invalid');
@@ -221,7 +221,7 @@ trait MaskTrait
         {
             $value = preg_replace('/[^0-9]/', '', strval($cepNumber));
 
-            if (!\Tools\Utily\Validate::cep($value))
+            if (!\Tools\Utility\Validate::cep($value))
             {
                 Log::write(LogLevel::ALERT, __d('tools', 'CEP {0} invalid', $cepNumber));
                 return __d('tools', 'CEP invalid');
