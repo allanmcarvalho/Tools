@@ -65,7 +65,7 @@ trait TextTrait
      */
     private function _formatPersonalName($name)
     {
-        return $this->_formatName(preg_replace('/[^a-zA-Z0-9 ]/', '', $name));
+        return $this->_formatName(preg_replace('/[^A-zÀ-ÿ0-9 ]/', '', $name));
     }
     
     /**
@@ -75,7 +75,7 @@ trait TextTrait
      */
     private function _formatCompanyName($name)
     {
-        return $this->_formatName(preg_replace('/[^a-zA-Z0-9& ]/', '', $name));
+        return $this->_formatName(preg_replace('/[^A-zÀ-ÿ0-9& ]/', '', $name));
     }
     
     /**
@@ -85,7 +85,7 @@ trait TextTrait
      */
     private function _formatAddressName($name, $abbreviate = true)
     {
-        $address = $this->_formatName(preg_replace('/[^a-zA-Z0-9 ]/', '', $name));
+        $address = $this->_formatName(preg_replace('/[^A-zÀ-ÿ0-9 ]/', '', $name));
         if($abbreviate === true)
         {
             $addressArray = explode(' ', $address);
