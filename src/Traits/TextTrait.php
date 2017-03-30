@@ -140,6 +140,9 @@ trait TextTrait
                 $first             = substr($word, 0, 1);
                 $leftover          = str_replace($this->accentsUppercase, $this->accentsLowercase, strtolower(substr($word, 1)));
                 $stringArray[$key] = $first . $leftover;
+            } elseif($key > 0)
+            {
+                $stringArray[$key] = str_replace($this->accentsUppercase, $this->accentsLowercase, strtolower($stringArray[$key]));
             }
         }
         return trim(implode(' ', $stringArray));
