@@ -40,8 +40,8 @@ trait TextTrait
      */
     private function _formatName($name)
     {
-        $search       = ['Á', 'À', 'Ã', 'É', 'Ê', 'Í', 'Ó', 'Õ', 'Ú', 'Ç'];
-        $replace      = ['á', 'à', 'ã', 'é', 'ê', 'í', 'ó', 'õ', 'ú', 'ç'];
+        $search       = ['Á', 'À', 'Ã', 'Â', 'Ä', 'Å', 'É', 'Ê', 'È', 'Ë', 'Í', 'Ì', 'Î', 'Ï', 'Ó', 'Ò', 'Ô', 'Õ', 'Ö', 'Ú', 'Ù', 'Û', 'Ü', 'Ç', 'Ñ', 'Ý', 'Æ'];
+        $replace      = ['á', 'à', 'ã', 'â', 'ä', 'å', 'é', 'ê', 'è', 'ë', 'í', 'ì', 'î', 'ï', 'ó', 'ò', 'ô', 'õ', 'ö', 'ú', 'ù', 'û', 'ü', 'ç', 'ñ', 'ý', 'æ'];
         $maintainList = ["a", "i", "e", "de", "da", "das", "do", "di", "dos", "ii", "iii", "vi", "iv"];
         $nameArray    = explode(" ", trim(strtolower(str_replace($search, $replace, $name))));
         foreach ($nameArray as $key => $word)
