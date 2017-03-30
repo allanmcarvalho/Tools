@@ -22,7 +22,7 @@ class ToolsValidation
      */
     public static function cpf($cpfNumber)
     {
-        return (bool) \Tools\Utily\Validate::cpf($cpfNumber);
+        return (bool) \Tools\Utility\Validate::cpf($cpfNumber);
     }
     
     /**
@@ -32,7 +32,7 @@ class ToolsValidation
      */
     public static function cnpj($cnpjNumber)
     {
-        return (bool) \Tools\Utily\Validate::cnpj($cnpjNumber);
+        return (bool) \Tools\Utility\Validate::cnpj($cnpjNumber);
     }
     
     /**
@@ -42,7 +42,7 @@ class ToolsValidation
      */
     public static function rg($rgNumber)
     {
-        return (bool) \Tools\Utily\Validate::rg($rgNumber);
+        return (bool) \Tools\Utility\Validate::rg($rgNumber);
     }
     
     /**
@@ -52,7 +52,7 @@ class ToolsValidation
      */
     public static function phone($phoneNumber)
     {
-        return (bool) \Tools\Utily\Validate::phone($phoneNumber);
+        return (bool) \Tools\Utility\Validate::phone($phoneNumber);
     }
     
     /**
@@ -62,7 +62,7 @@ class ToolsValidation
      */
     public static function telephone($phoneNumber)
     {
-        return (bool) \Tools\Utily\Validate::phone($phoneNumber, \Tools\Abstracts\PhoneTypes::TELEPHONE);
+        return (bool) \Tools\Utility\Validate::phone($phoneNumber, \Tools\Abstracts\PhoneTypes::TELEPHONE);
     }
     
     /**
@@ -72,7 +72,7 @@ class ToolsValidation
      */
     public static function cellphone($phoneNumber)
     {
-        return (bool) \Tools\Utily\Validate::phone($phoneNumber, \Tools\Abstracts\PhoneTypes::CELLPHONE);
+        return (bool) \Tools\Utility\Validate::phone($phoneNumber, \Tools\Abstracts\PhoneTypes::CELLPHONE);
     }
     
     /**
@@ -82,7 +82,7 @@ class ToolsValidation
      */
     public static function servicePhone($phoneNumber)
     {
-        return (bool) \Tools\Utily\Validate::phone($phoneNumber, \Tools\Abstracts\PhoneTypes::SERVICE);
+        return (bool) \Tools\Utility\Validate::phone($phoneNumber, \Tools\Abstracts\PhoneTypes::SERVICE);
     }
     
     /**
@@ -92,7 +92,7 @@ class ToolsValidation
      */
     public static function nonRegionalPhone($phoneNumber)
     {
-        return (bool) \Tools\Utily\Validate::phone($phoneNumber, \Tools\Abstracts\PhoneTypes::NON_REGIONAL);
+        return (bool) \Tools\Utility\Validate::phone($phoneNumber, \Tools\Abstracts\PhoneTypes::NON_REGIONAL);
     }
     
     /**
@@ -102,7 +102,7 @@ class ToolsValidation
      */
     public static function cep($cepNumber)
     {
-        return (bool) \Tools\Utily\Validate::cep($cepNumber);
+        return (bool) \Tools\Utility\Validate::cep($cepNumber);
     }
     
     /**
