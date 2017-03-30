@@ -89,11 +89,11 @@ trait TextTrait
         if($abbreviate === true)
         {
             $addressArray = explode(' ', $address);
-            if($addressArray[0] == 'Rua')
+            if(in_array($addressArray[0], ['R', 'Rua']))
             {
                 $addressArray[0] = 'R.';
             }
-            if($addressArray[0] == 'Avenida')
+            if(in_array($addressArray[0], ['Av', 'Avenida']))
             {
                 $addressArray[0] = 'Av.';
             }
