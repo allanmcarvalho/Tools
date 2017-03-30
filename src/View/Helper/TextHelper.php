@@ -59,4 +59,14 @@ class TextHelper extends Helper
     {
         return $this->_formatPersonalName($name);
     }
+    
+    /**
+     * Format text
+     * @param string $string
+     * @return string
+     */
+    public function formatUcFirst($string)
+    {
+        return $this->_formatUcFirst($string);
+    }
 }

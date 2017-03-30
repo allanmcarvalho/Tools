@@ -63,5 +63,16 @@ class Text
         $text = new Text();
         return $text->_formatAddressName($name);
     }
+    
+    /**
+     * Format text
+     * @param string $string
+     * @return string
+     */
+    private function formatUcFirst($string)
+    {
+        $text = new Text();
+        return $text->_formatUcFirst($string);
+    }
 
 }

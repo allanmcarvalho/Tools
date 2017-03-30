@@ -101,4 +101,14 @@ trait TextTrait
         
         return implode(' ', $addressArray);
     }
+    
+    /**
+     * Format text
+     * @param string $string
+     * @return string
+     */
+    private function _formatUcFirst($string)
+    {
+        return ucfirst(strtolower($this->_formatName($string)));
+    }
 }
