@@ -28,7 +28,7 @@ class Text
     public static function formatName($name, $abbreviate = true)
     {
         $text = new Text();
-        return $text->_formatAddressName($name, $abbreviate);
+        return $text->_formatName($name, $abbreviate);
     }
     
     /**
