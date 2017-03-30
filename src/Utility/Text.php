@@ -74,5 +74,16 @@ class Text
         $text = new Text();
         return $text->_formatUcFirst($string);
     }
+    
+    /**
+     * Format basic string
+     * @param type $string
+     * @return type
+     */
+    public static function formatBasic($string)
+    {
+        $text = new Text();
+        return $text->_formatBasic($string);
+    }
 
 }

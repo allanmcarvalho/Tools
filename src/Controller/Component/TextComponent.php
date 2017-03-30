@@ -70,4 +70,14 @@ class TextComponent extends Component
     {
         return $this->_formatUcFirst($string);
     }
+    
+    /**
+     * Format basic string
+     * @param string $string
+     * @return string
+     */
+    public function formatBasic($string)
+    {
+        return $this->_formatBasic($string);
+    }
 }
