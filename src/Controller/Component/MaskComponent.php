@@ -81,4 +81,24 @@ class MaskComponent extends Component
     {
         return $this->_custom($value, $mask);
     }
+    
+    /**
+     * Transform number in string
+     * @param double $value
+     * @param int $type
+     * @return string
+     */
+    public function writterNumber($value, $type)
+    {
+        return \Tools\Utility\WrittenNumber::number($value, $type);
+    }
+    
+    /**
+     * Remove mask special chars from string
+     * @param string $string
+     */
+    public function removeMask(&$string)
+    {
+        $this->_removeMask($string);
+    }
 }

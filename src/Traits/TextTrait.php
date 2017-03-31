@@ -39,55 +39,64 @@ trait TextTrait
     }
 
     /**
-     * Format a name
+     * 
      * @param string $name
      * @return string
      */
-    private function _formatName($name)
+    private function _baseFormat($name)
     {
-        $nameArray = explode(" ", trim(strtolower(str_replace($this->accentsUppercase, $this->accentsLowercase, $name))));
-        foreach ($nameArray as $key => $word)
+        if (!empty($name))
         {
-            if ($nameArray[$key] == null)
+            $nameArray = explode(" ", trim(strtolower(str_replace($this->accentsUppercase, $this->accentsLowercase, $name))));
+            foreach ($nameArray as $key => $word)
             {
-                unset($nameArray[$key]);
+                if ($nameArray[$key] == null)
+                {
+                    unset($nameArray[$key]);
+                }
+                if (!in_array($word, $this->nameMaintainList))
+                {
+                    $nameArray[$key] = ucfirst($word);
+                }
             }
-            if (!in_array($word, $this->nameMaintainList))
-            {
-                $nameArray[$key] = ucfirst($word);
-            }
+            return trim(implode(' ', $nameArray));
         }
-        return trim(implode(' ', $nameArray));
+    }
+
+    /**
+     * Format a name
+     * @param string $name
+     */
+    private function _formatName(&$name)
+    {
+        $name = $this->_baseFormat($name);
     }
 
     /**
      * Format a personal name
      * @param string $name
-     * @return string
      */
-    private function _formatPersonalName($name)
+    private function _formatPersonalName(&$name)
     {
-        return $this->_formatName(preg_replace('/[^A-zÀ-ÿ ]/', '', $name));
+        $name = $this->_baseFormat(preg_replace('/[^A-zÀ-ÿ ]/', '', $name));
     }
 
     /**
      * Format a company name
      * @param string $name
-     * @return string
      */
-    private function _formatCompanyName($name)
+    private function _formatCompanyName(&$name)
     {
-        return $this->_formatName(preg_replace('/[^A-zÀ-ÿ0-9& ]/', '', $name));
+        $name = $this->_baseFormat(preg_replace('/[^A-zÀ-ÿ0-9&. ]/', '', $name));
     }
 
     /**
      * Format a address name
      * @param string $name
-     * @return string
      */
-    private function _formatAddressName($name, $abbreviate = true)
+    private function _formatAddressName(&$name, $abbreviate = true)
     {
-        $address = $this->_formatName(preg_replace('/[^A-zÀ-ÿ0-9 ]/', '', $name));
+        $address = $this->_baseFormat(preg_replace('/[^A-zÀ-ÿ0-9., ]/', '', $name));
         if ($abbreviate === true)
         {
             $addressArray = explode(' ', $address);
@@ -99,55 +108,65 @@ trait TextTrait
             {
                 $addressArray[0] = 'Av.';
             }
+            $address = implode(' ', $addressArray);
         }
-
-        return implode(' ', $addressArray);
+        $name = $address;
     }
 
     /**
      * Format text
      * @param string $string
+     */
+    private function _formatUcFirst(&$string)
+    {
+        $string = ucfirst(strtolower($this->_baseFormat($string)));
+    }
+
+    private function _formatBasic(&$string)
+    {
+        if(!empty($string))
+        {
+            $stringArray = explode(" ", $this->strReplace($this->stringMaintainList, $this->stringMaintainList, $string, true));
+            foreach ($stringArray as $key => $word)
+            {
+                if (substr($word, 0, 1) == '[' and substr($word, (strlen($word) - 1), 1) == ']')
+                {
+                    $stringArray[$key] = substr($word, 1, (strlen($word) - 2));
+                    continue;
+                }
+                if ($key == 0)
+                {
+                    $first             = strtoupper(substr($word, 0, 1));
+                    $leftover          = str_replace($this->accentsUppercase, $this->accentsLowercase, strtolower(substr($word, 1)));
+                    $stringArray[$key] = $first . $leftover;
+                }
+                if ($stringArray[$key] == null)
+                {
+                    unset($stringArray[$key]);
+                    continue;
+                }
+                if (strlen($word) > 1 and ! in_array($word, $this->stringMaintainList) and $key > 0)
+                {
+                    $first             = substr($word, 0, 1);
+                    $leftover          = str_replace($this->accentsUppercase, $this->accentsLowercase, strtolower(substr($word, 1)));
+                    $stringArray[$key] = $first . $leftover;
+                } elseif ($key > 0)
+                {
+                    $stringArray[$key] = str_replace($this->accentsUppercase, $this->accentsLowercase, strtolower($stringArray[$key]));
+                }
+            }
+            $string = trim(implode(' ', $stringArray));
+        }
+    }
+
+    /**
+     * 
+     * @param mixed $search
+     * @param mixed $replace
+     * @param string $subject
+     * @param bool $casesensitive
      * @return string
      */
-    private function _formatUcFirst($string)
-    {
-        return ucfirst(strtolower($this->_formatName($string)));
-    }
-
-    private function _formatBasic($string)
-    {
-        $stringArray = explode(" ", $this->strReplace($this->stringMaintainList, $this->stringMaintainList, $string, true));
-        foreach ($stringArray as $key => $word)
-        {
-            if (substr($word, 0, 1) == '[' and substr($word, (strlen($word) - 1), 1) == ']')
-            {
-                $stringArray[$key] = substr($word, 1, (strlen($word) - 2));
-                continue;
-            }
-            if ($key == 0)
-            {
-                $first             = strtoupper(substr($word, 0, 1));
-                $leftover          = str_replace($this->accentsUppercase, $this->accentsLowercase, strtolower(substr($word, 1)));
-                $stringArray[$key] = $first . $leftover;
-            }
-            if ($stringArray[$key] == null)
-            {
-                unset($stringArray[$key]);
-                continue;
-            }
-            if (strlen($word) > 1 and ! in_array($word, $this->stringMaintainList) and $key > 0)
-            {
-                $first             = substr($word, 0, 1);
-                $leftover          = str_replace($this->accentsUppercase, $this->accentsLowercase, strtolower(substr($word, 1)));
-                $stringArray[$key] = $first . $leftover;
-            } elseif($key > 0)
-            {
-                $stringArray[$key] = str_replace($this->accentsUppercase, $this->accentsLowercase, strtolower($stringArray[$key]));
-            }
-        }
-        return trim(implode(' ', $stringArray));
-    }
-
     private function strReplace($search, $replace, $subject, $casesensitive = false)
     {
         foreach ($search as $key => $item)

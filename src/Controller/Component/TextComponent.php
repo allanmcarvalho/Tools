@@ -24,60 +24,54 @@ class TextComponent extends Component
      * format address name
      * @param string $name
      * @param bool $abbreviate
-     * @return string
      */
-    public function formatAddressName($name, $abbreviate = true)
+    public function formatAddressName(&$name, $abbreviate = true)
     {
-        return $this->_formatAddressName($name, $abbreviate);
+        $this->_formatAddressName($name, $abbreviate);
     }
 
     /**
      * format company name
      * @param string $name
-     * @return string
      */
-    public function formatCompanyName($name)
+    public function formatCompanyName(&$name)
     {
-        return $this->_formatCompanyName($name);
+        $this->_formatCompanyName($name);
     }
 
     /**
      * format a name
      * @param string $name
-     * @return string
      */
-    public function formatName($name)
+    public function formatName(&$name)
     {
-        return $this->_formatName($name);
+        $this->_formatName($name);
     }
 
     /**
      * format a personal name
      * @param string $name
-     * @return string
      */
-    public function formatPersonalName($name)
+    public function formatPersonalName(&$name)
     {
-        return $this->_formatPersonalName($name);
+        $this->_formatPersonalName($name);
     }
 
     /**
      * Format text
      * @param string $string
-     * @return string
      */
-    public function formatUcFirst($string)
+    public function formatUcFirst(&$string)
     {
-        return $this->_formatUcFirst($string);
+        $this->_formatUcFirst($string);
     }
     
     /**
      * Format basic string
      * @param string $string
-     * @return string
      */
-    public function formatBasic($string)
+    public function formatBasic(&$string)
     {
-        return $this->_formatBasic($string);
+        $this->_formatBasic($string);
     }
 }

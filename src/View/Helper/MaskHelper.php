@@ -94,4 +94,13 @@ class MaskHelper extends Helper
     {
         return \Tools\Utility\WrittenNumber::number($value, $type);
     }
+    
+    /**
+     * Remove mask special chars from string
+     * @param string $string
+     */
+    public function removeMask(&$string)
+    {
+        $this->_removeMask($string);
+    }
 }

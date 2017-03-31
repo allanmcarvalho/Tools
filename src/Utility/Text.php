@@ -23,67 +23,61 @@ class Text
      * Format a name
      * @param string $name
      * @param bool $abbreviate
-     * @return string
      */
-    public static function formatName($name, $abbreviate = true)
+    public static function formatName(&$name, $abbreviate = true)
     {
         $text = new Text();
-        return $text->_formatName($name, $abbreviate);
+        $text->_formatName($name, $abbreviate);
     }
     
     /**
      * Format a personal name
      * @param string $name
-     * @return string
      */
-    public static function formatPersonalName($name)
+    public static function formatPersonalName(&$name)
     {
         $text = new Text();
-        return $text->_formatPersonalName($name);
+        $text->_formatPersonalName($name);
     }
 
     /**
      * Format a company name
      * @param string $name
-     * @return string
      */
-    public static function formatCompanyName($name)
+    public static function formatCompanyName(&$name)
     {
         $text = new Text();
-        return $text->_formatCompanyName($name);
+        $text->_formatCompanyName($name);
     }
     
     /**
      * Format a address name
      * @param string $name
-     * @return string
      */
-    public static function formatAddressName($name)
+    public static function formatAddressName(&$name)
     {
         $text = new Text();
-        return $text->_formatAddressName($name);
+        $text->_formatAddressName($name);
     }
     
     /**
      * Format text
      * @param string $string
-     * @return string
      */
-    public static function formatUcFirst($string)
+    public static function formatUcFirst(&$string)
     {
         $text = new Text();
-        return $text->_formatUcFirst($string);
+        $text->_formatUcFirst($string);
     }
     
     /**
      * Format basic string
      * @param type $string
-     * @return type
      */
-    public static function formatBasic($string)
+    public static function formatBasic(&$string)
     {
         $text = new Text();
-        return $text->_formatBasic($string);
+        $text->_formatBasic($string);
     }
 
 }

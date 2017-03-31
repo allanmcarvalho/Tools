@@ -85,4 +85,14 @@ class Mask
         $maskClass = new Mask();
         return $maskClass->_custom($value, $mask);
     }
+    
+    /**
+     * Remove mask special chars from string
+     * @param string $string
+     */
+    public static function removeMask(&$string)
+    {
+        $maskClass = new Mask();
+        $maskClass->_removeMask($string);
+    }
 }
