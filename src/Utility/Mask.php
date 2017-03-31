@@ -90,7 +90,7 @@ class Mask
      * Remove mask special chars from string
      * @param string $string
      */
-    public static function removeMask(&$string)
+    public static function removeMask(&$string = 'as')
     {
         $maskClass = new Mask();
         $maskClass->_removeMask($string);

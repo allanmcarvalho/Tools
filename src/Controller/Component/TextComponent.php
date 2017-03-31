@@ -21,6 +21,16 @@ class TextComponent extends Component
     use TextTrait;
 
     /**
+     * Remove spaces before and/or after send data
+     * @param \ArrayObject $data
+     * @return \ArrayObject
+     */
+    public function trimArray($data)
+    {
+        return $this->_trimArray($data);
+    }
+    
+    /**
      * format address name
      * @param string $name
      * @param bool $abbreviate

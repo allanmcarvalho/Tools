@@ -17,8 +17,20 @@ use Tools\Traits\TextTrait;
  */
 class Text
 {
+
     use TextTrait;
-    
+
+    /**
+     * Remove spaces before and/or after send data
+     * @param \ArrayObject $data
+     * @return \ArrayObject
+     */
+    public static function trimArray($data)
+    {
+        $text = new Text();
+        return $text->_trimArray($data);
+    }
+
     /**
      * Format a name
      * @param string $name
@@ -29,7 +41,7 @@ class Text
         $text = new Text();
         $text->_formatName($name, $abbreviate);
     }
-    
+
     /**
      * Format a personal name
      * @param string $name
@@ -49,7 +61,7 @@ class Text
         $text = new Text();
         $text->_formatCompanyName($name);
     }
-    
+
     /**
      * Format a address name
      * @param string $name
@@ -59,7 +71,7 @@ class Text
         $text = new Text();
         $text->_formatAddressName($name);
     }
-    
+
     /**
      * Format text
      * @param string $string
@@ -69,7 +81,7 @@ class Text
         $text = new Text();
         $text->_formatUcFirst($string);
     }
-    
+
     /**
      * Format basic string
      * @param type $string

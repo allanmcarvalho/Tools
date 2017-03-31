@@ -26,7 +26,7 @@ trait TextTrait
      * @param \ArrayObject $data
      * @return \ArrayObject
      */
-    private function _trimFields($data)
+    private function _trimArray($data)
     {
         foreach ($data as $item => $value)
         {

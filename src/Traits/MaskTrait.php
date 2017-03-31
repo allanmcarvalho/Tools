@@ -279,9 +279,12 @@ trait MaskTrait
      */
     protected function _removeMask(&$string)
     {
-        if (!empty($string))
+        if (isset($string))
         {
             $string = preg_replace('/[^0-9a-zA-ZÀ-ÿ]/', '', $string);
+        } else
+        {
+            $string = NULL;
         }
     }
 
