@@ -272,14 +272,17 @@ trait MaskTrait
             return __d('tools', '"mask" and "value" are not compatible');
         }
     }
-    
+
     /**
      * Remove mask special chars from string
      * @param string $string
      */
     protected function _removeMask(&$string)
     {
-        $string = preg_replace('/[^0-9a-zA-ZÀ-ÿ]/', '', $string);
+        if (!empty($string))
+        {
+            $string = preg_replace('/[^0-9a-zA-ZÀ-ÿ]/', '', $string);
+        }
     }
 
 }
